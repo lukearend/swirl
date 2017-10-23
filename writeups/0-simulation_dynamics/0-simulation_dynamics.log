@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 OCT 2017 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 OCT 2017 01:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**simulation_dynamics.tex
-(./simulation_dynamics.tex
+**0-simulation_dynamics.tex
+(./0-simulation_dynamics.tex
 LaTeX2e <2015/01/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
@@ -118,8 +118,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(./simulation_dynamics.aux)
-\openout1 = `simulation_dynamics.aux'.
+(./0-simulation_dynamics.aux)
+\openout1 = `0-simulation_dynamics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -206,27 +206,27 @@ Package pdftex.def Info: free_body.png used on input line 44.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./f
-ree_body.png>] [3] [4] [5] (./simulation_dynamics.aux) ) 
+ree_body.png>] [3] [4] [5] (./0-simulation_dynamics.aux) ) 
 Here is how much of TeX's memory you used:
  2126 strings out of 493089
- 28898 string characters out of 6134842
+ 28916 string characters out of 6134842
  96008 words of memory out of 5000000
  5597 multiletter control sequences out of 15000+600000
  10594 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,23p,376b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on simulation_dynamics.pdf (5 pages, 149079 bytes).
+ 38i,11n,23p,378b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on 0-simulation_dynamics.pdf (5 pages, 149092 bytes).
 PDF statistics:
  63 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream

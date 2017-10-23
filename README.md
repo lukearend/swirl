@@ -7,7 +7,7 @@ Swirl is a sandbox of reinforcement learning tutorials exploring various solutio
 
 Here's the table of contents so far:
 
-- [Chapter 0: Simulation dynamics](writeups/0-simulation_dynamics/simulation_dynamics.pdf) - A derivation of the equations of motion for the system and the update rule for simulating it numerically.
+- [Chapter 0: Simulation dynamics](writeups/0-simulation_dynamics/0-simulation_dynamics.pdf) - A derivation of the equations of motion for the system and the update rule for simulating it numerically.
 - [Chapter 1: PID](writeups/1-pid/1-pid.pdf) - A basic, heuristic solution using PID control, with a discussion of cascading PID as a top-down behavioral hierarchy.
 - [Chapter 2: MDP](writeups/2-mdp/2-mdp.pdf) - A setting of the task as a Markov decision problem in a coarsely discretized state space, with an optimal control policy found via direct numerical solution of the Bellman equations.
 
