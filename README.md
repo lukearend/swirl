@@ -1,5 +1,5 @@
 # swirl
-reinforcement learning with things that swing
+_reinforcement learning with things that swing_
 
 You're handed a pendulum, and told to keep it balanced with the weight up in the air by actively moving the fulcrum. What is the best way to do this?
 
