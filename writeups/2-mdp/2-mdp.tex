@@ -31,8 +31,8 @@ A Markov decision problem (MDP) is defined by a 5-tuple $(\mathscr{S}, \mathscr{
 \begin{enumerate}[(i)]
 \item $\mathscr{S}$ is a finite set of states;
 \item $\mathscr{A}$ is a finite set of actions;
-\item $P_a(s, s')$ is the probability that action $a$ in state $s$ at time $t$ will lead to state $s'$ at time $t + 1$;
-\item $R_a(s, s')$ is the immediate reward received after transitioning from state $s$ to state $s'$ due to action $a$; and
+\item $P_a(s, s^\prime)$ is the probability that action $a$ in state $s$ at time $t$ will lead to state $s^\prime$ at time $t + 1$;
+\item $R_a(s, s^\prime)$ is the immediate reward received after transitioning from state $s$ to state $s^\prime$ due to action $a$; and
 \item $\gamma \in [0, 1]$ is a discount factor which represents the difference in importance between future rewards and present rewards.
 \end{enumerate}
 
@@ -46,16 +46,16 @@ The problem is to find a policy for a decision-making agent that navigates the s
 
 Imagine that we have some magical function $V(\cdot)$ which tells us the inherent value of a state. It accepts a state as its argument, and its output value tells us \emph{how characteristically good} it is to be in that state for the purposes of achieving our goal (that is, maximizing reward). A bit philosophical, eh?
 
-If we had this function, then choosing a policy would be trivial: the optimal policy is one which always selects the action that maximizes the expectation of $V(s')$ based on the present state $s$. The expectation of $V(s')$ under a given action $a$ in state $s$ is a sum of $V(s')$ over all possible $s'$, with each term weighted by the probability of transitioning from $s$ to $s'$ due to action $a$:
+If we had this function, then choosing a policy would be trivial: the optimal policy is one which always selects the action that maximizes the expectation of $V(s^\prime)$ based on the present state $s$. The expectation of $V(s^\prime)$ under a given action $a$ in state $s$ is a sum of $V(s^\prime)$ over all possible $s^\prime$, with each term weighted by the probability of transitioning from $s$ to $s^\prime$ due to action $a$:
 
 \begin{equation}
-\mathbb{E}[V(s')] = \sum_{s' \in \mathscr{S}} P_a(s, s') V(s').
+\mathbb{E}[V(s^\prime)] = \sum_{s^\prime \in \mathscr{S}} P_a(s, s^\prime) V(s^\prime).
 \end{equation}
 
 So the optimal policy is
 
 \begin{equation}
-\pi^*(s) = \underset{a}{\arg\max} \, \mathbb{E}[V(s')] = \underset{a}{\arg\max} \, \sum_{s' \in \mathscr{S}} P_a(s, s') V(s').
+\pi^*(s) = \underset{a}{\arg\max} \, \mathbb{E}[V(s^\prime)] = \underset{a}{\arg\max} \, \sum_{s^\prime \in \mathscr{S}} P_a(s, s^\prime) V(s^\prime).
 \end{equation}
 
 But, the inherent value of a state $V(\cdot)$ depends on what policy we are following. In particular, it is the sum of the expected reward over all future times if we act according to a policy $\pi$. Intuitively, there are two factors which influence the value of state $s$:
@@ -65,48 +65,48 @@ But, the inherent value of a state $V(\cdot)$ depends on what policy we are foll
 \item{the expected value of the state which follows from acting on our policy in state $s$.}
 \end{enumerate}
 
-Note that the second of these is defined in terms of the expected value of the state which follows. Thus, our description of the value of state $s$ includes the value of state $s'$, and in this way recursively depends on the value of all future states which will follow.
+Note that the second of these is defined in terms of the expected value of the state which follows. Thus, our description of the value of state $s$ includes the value of state $s^\prime$, and in this way recursively captures something about the value of all future states.
 
-Let's work out each of the two factors above, starting with the first piece. The expected reward of taking action $a$ in a given state $s$ is a sum of $R_a(s, s')$ over all possible $s'$, with each term weighted by the probability of transitioning from $s$ to $s'$ due to action $a$:
+Let's work out each of the two factors above, starting with the first piece. The expected reward of taking action $a$ in a given state $s$ is a sum of $R_a(s, s^\prime)$ over all possible $s^\prime$, with each term weighted by the probability of transitioning from $s$ to $s^\prime$ due to action $a$:
 
 \begin{equation}
-\mathbb{E}[R_a(s)] = \sum_{s' \in \mathscr{S}} P_a(s, s') R_a(s, s').
+\mathbb{E}[R_a(s)] = \sum_{s^\prime \in \mathscr{S}} P_a(s, s^\prime) R_a(s, s^\prime).
 \end{equation}
 
 The action $a$ is selected by policy $\pi(s)$, so we can rewrite our equation above as the expected reward of acting under policy $\pi$ in a given state $s$:
 
 \begin{equation}
-\label{eq:reward} \mathbb{E}[R_{\pi(s)}(s)] = \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') R_{\pi(s)}(s, s').
+\label{eq:reward} \mathbb{E}[R_{\pi(s)}(s)] = \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) R_{\pi(s)}(s, s^\prime).
 \end{equation}
 
 This is our expression for the immediate expected reward of acting on our policy in state $s$ (the first of the two factors mentioned above). But the value of state $s$ depends not only on this immediately available reward; it also depends on the expected value of the state which follows from acting on our policy (the second of the two factors above):
 
 \begin{equation}
-\label{eq:future_value} \mathbb{E}[V(s')] = \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') V(s').
+\label{eq:future_value} \mathbb{E}[V(s^\prime)] = \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) V(s^\prime).
 \end{equation}
 
-The full value of state $s$ is a sum of equations (\ref{eq:reward}) and (\ref{eq:future_value}), with the second weighted by our discount factor to reflect the fact that this is the value of a state ($s'$) which is one step ahead in the future from the state ($s$) whose value we are presently considering. So, to get the value of state $s$ under policy $\pi$, we sum the expectation of the immediate reward for acting on our policy from state $s$ and the future-discounted expectation of the value of the state $s'$ which follows from acting on our policy in state $s$:
+The full value of state $s$ is a sum of equations (\ref{eq:reward}) and (\ref{eq:future_value}), with the second weighted by our discount factor to reflect the fact that this is the value of a state ($s^\prime$) which is one step ahead in the future from the state ($s$) whose value we are presently considering. So, to get the value of state $s$ under policy $\pi$, we sum the expectation of the immediate reward for acting on our policy from state $s$ and the future-discounted expectation of the value of the state $s^\prime$ which follows from acting on our policy in state $s$:
 
 \begin{align}
-V(s) &= \mathbb{E}[R_{\pi(s)}(s)] + \gamma \mathbb{E}[V(s')] \\[5pt]
-&= \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') R_{\pi(s)}(s, s') + \gamma \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') V(s') \\[5pt]
-&= \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') \Big(R_{\pi(s)}(s, s') + \gamma V(s')\Big)
+V(s) &= \mathbb{E}[R_{\pi(s)}(s)] + \gamma \mathbb{E}[V(s^\prime)] \\[5pt]
+&= \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) R_{\pi(s)}(s, s^\prime) + \gamma \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) V(s^\prime) \\[5pt]
+&= \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) \Big(R_{\pi(s)}(s, s^\prime) + \gamma V(s^\prime)\Big)
 \end{align}
 
 Let's take stock. We have an expression for the optimal policy with respect to any given value function, and we have an expression for a value function under a given policy. To reiterate:
 
 \begin{align}
-\pi^*(s) &= \underset{a}{\arg\max} \, \mathbb{E}[V(s')] = \underset{a}{\arg\max} \, \sum_{s' \in \mathscr{S}} P_a(s, s') V(s') \\[5pt]
-V(s) &= \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') \Big(R_{\pi(s)}(s, s') + \gamma V(s')\Big)
+\pi^*(s) &= \underset{a}{\arg\max} \, \mathbb{E}[V(s^\prime)] = \underset{a}{\arg\max} \, \sum_{s^\prime \in \mathscr{S}} P_a(s, s^\prime) V(s^\prime) \\[5pt]
+V(s) &= \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) \Big(R_{\pi(s)}(s, s^\prime) + \gamma V(s^\prime)\Big)
 \end{align}
 
 \subsection{The Bellman optimality equations}
 
-But now we have a bit of a conundrum. We know the optimal policy with a given a value function, but our value function itself depends on what policy we're acting under! How do we find, at once, the optimal value function and its optimal policy?
+But now we have a bit of a conundrum. We know the optimal policy with respect to a given value function, but our value function itself depends on what policy we're acting under! How do we find, at once, the optimal value function and its optimal policy?
 
-For any given state, there exists a large space of possible value functions due to all possible policies we could use. Consider for a moment that we are handed, from on high, the optimal policy for our task. Under this policy, the output of the value function would be greater than or equal to the output of the value function under any other policy. This is because the optimal policy necessarily maximizes the value of any state. So, policies give an ordering over all value functions, and the maximal value function for a state coincides with acting under a perfect policy, or taking the best possible action for that state.
+There exists a large space of possible value functions due to all possible policies we could use. However, consider for a moment that we are handed from on high the optimal policy for our task. Under this policy, the output of the value function will be greater than or equal to the output of the value function under any other policy. This is because under the optimal policy, the value of any given state is always maximized. So, the maximum of all possible value functions for a state coincides with the value function we have when acting under an optimal policy.
 
-So, we can readily define a notion of the optimal value function. The optimal value function for a state must equal the value function for that state under the best possible action for that state:
+With this in mind, we can readily define a notion of the optimal value function. The optimal value function for a state must equal the value function for that state under the best possible action for that state:
 
 \begin{equation}
 V^*(s) = \underset{a}{\max} \, V(s).
@@ -115,17 +115,17 @@ V^*(s) = \underset{a}{\max} \, V(s).
 Note that in this case, the action $a$ is the optimal policy $\pi^*(s)$. This enables us to write out $V(s)$ with no reference to $\pi(s)$ at all, instead substituting $\pi(s) = a$:
 
 \begin{equation}
-V^*(s) = \underset{a}{\max} \, \sum_{s' \in \mathscr{S}} P_{\pi(s)}(s, s') \Big(R_{\pi(s)}(s, s') + \gamma V^*(s')\Big).
+V^*(s) = \underset{a}{\max} \, \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) \Big(R_{\pi(s)}(s, s^\prime) + \gamma V^*(s^\prime)\Big).
 \end{equation}
 
-This requires solving a set of $|\mathscr{S}|$ nonlinear recurrence relations in $|\mathscr{S}|$ variables\footnotemark, each one requiring a maximum over $|\mathscr{A}|$ expressions ($|\mathscr{A}|$ and $|\mathscr{S}|$ are the number of elements in the sets $\mathscr{A}$ and $\mathscr{S}$, respectively). These are called the \emph{Bellman equations} for an optimal value function. Intuitively, solving each one amounts to finding the value functions which result from trying each available action in a state, and then selecting the value function which corresponds to the best action in that state (the value function for that state under an optimal policy). Solving them all simultaneously amounts to finding the value function under an optimal policy for all states at once, yielding the full optimal value function.
+This is a set of $|\mathscr{S}|$ nonlinear recurrence relations in $|\mathscr{S}|$ variables\footnotemark, each one requiring a maximum over $|\mathscr{A}|$ expressions ($|\mathscr{A}|$ and $|\mathscr{S}|$ are the number of elements in the sets $\mathscr{A}$ and $\mathscr{S}$, respectively). These are called the \emph{Bellman equations} for the optimal value function. Intuitively, solving each one amounts to finding the value of trying each available action in a state, and then selecting the value which corresponds to the best action in that state (the value of that state under an optimal policy). Solving them all simultaneously amounts to finding the value of all states at once when acting under an optimal policy, yielding the optimal value function.
 
 \footnotetext{Such systems generally cannot be characterized analytically and lack a closed-form solution. In fact, solving nonlinear recurrence relations is often viewed as a hopeless endeavor: to solve \emph{every} nonlinear recurrence relation would imply that one could solve the Halting problem, as one could encode a program as initial states and the workings of the Turing machine as the recurrence relations (see \href{https://math.stackexchange.com/users/11513/rex-kerr}{this Stack Exchange discussion} by Rex Kerr). But these equations can be solved numerically (at least in principle), and with sufficiently small action and state spaces this computation is tractable. This where we're headed.}
 
 Once we have $V^*(s)$, we can substitute this back into our expression for $\pi^*(s)$:
 
 \begin{equation}
-\pi^*(s) = \underset{a}{\arg\max} \, \sum_{s' \in \mathscr{S}} P_a(s, s') V^*(s').
+\pi^*(s) = \underset{a}{\arg\max} \, \sum_{s^\prime \in \mathscr{S}} P_a(s, s^\prime) V^*(s^\prime).
 \end{equation}
 
 This is an optimal policy, and our solution to the MDP.
@@ -233,12 +233,12 @@ $\kappa_1$ and $\kappa_2$ are parameters deciding the force of the action.
 
 \subsection{How the world works}
 
-Now our agent needs a model of the physical dynamics of its world and how its actions affect those dynamics. This model comes in the form of a set of transition probabilities $P_a(s, s')$---one for every possible action $a$---describing the probability of transitioning from state $s$ to state $s'$ due to that action.
+Now our agent needs a model of the physical dynamics of its world and how its actions affect those dynamics. This model comes in the form of a set of transition probabilities $P_a(s, s^\prime)$---one for every possible action $a$---describing the probability of transitioning from state $s$ to state $s^\prime$ due to that action.
 
 In our case the transition probabilities represent the physics of the pendulum-cart system. However, forming these transition probabilities is not totally straightforward: the states which describe our system each contain a wide, continuous range of actual physical configurations, leaving a great range of physical variability over which state will proceed from which. So, we will produce the transition probabilities via a Monte Carlo estimate of randomly simulated dynamics. For each state $a$ and state $s$, we'll randomly sample an angular position and velocity uniformly from within the state $s$, and run the simulation one step forward to end up in state $s_{next}$. We'll repeat this a large number of times $N$ and estimate the transition probabilities as
 
 \begin{equation}
-P_a(s, s') = \frac{1}{N}\sum_{i = 1}^N \mathbbm{1}(s_{next} = s').
+P_a(s, s^\prime) = \frac{1}{N}\sum_{i = 1}^N \mathbbm{1}(s_{next} = s^\prime).
 \end{equation}
 
 Since the most extreme states for velocity and angular velocity cover an unbounded range of physical possibilities (off to velocities of positive and negative $\infty$), we'll just have to choose physically realistic boundaries for the sake of sampling.
@@ -249,19 +249,19 @@ This is going to be an inherently flawed estimate. We're estimating the dynamics
 
 \subsection{What the agent wants}
 
-Next we need to construct a reward function that incentivizes our agent to do the right thing. Roughly, we would like our agent to balance the pendulum and remain near the center of the track. This means there are two things we wish to avoid:
+Next we need to construct a reward function that incentivizes our agent to do the right thing. We would like our agent to balance the pendulum and remain near the center of the track. This means there are two things we wish to avoid:
 
 \begin{enumerate}[(i)]
 \item{allowing the pendulum to fall below the level of the track and}
 \item{moving the cart too close to the ends of the track.}
 \end{enumerate}
 
-So, we will let the reward function equal -1 for any action taken in any state that satisfies either of these conditions, and 0 otherwise:
+So, we will let the reward function equal -1 for any transition into a state that satisfies either of these conditions, and 0 otherwise:
 
 \begin{equation}
-R_a(s, s') = \left\{
+R_a(s, s^\prime) = \left\{
 \begin{array}{lr}
--1 \quad : s^\theta \in \left\{s_1^\theta, s_4^\theta \right\}\mbox{ or }s^x \in \left\{s_1^x, s_4^x \right\} \\
+-1 \quad : s^{\theta\prime} \in \left\{s_1^\theta, s_4^{\theta\prime} \right\}\mbox{ or }s^x \in \left\{s_1^{x\prime}, s_4^{x\prime} \right\} \\
 0 \quad : \mbox{otherwise}
 \end{array}
 \right.
