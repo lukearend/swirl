@@ -11,6 +11,6 @@ Here's the table of contents so far:
 - [Chapter 1: PID](writeups/1-pid/1-pid.pdf) - A basic, heuristic solution using PID control, with a discussion of cascading PID as a top-down behavioral hierarchy.
 - [Chapter 2: MDP](writeups/2-mdp/2-mdp.pdf) - A setting of the task as a Markov decision problem in a coarsely discretized state space, with an optimal control policy found via direct numerical solution of the Bellman equations.
 
-These writeups are set in LaTeX and located in the `writeups` folder. Their code implementations are in the correspondingly named folders (the `README.md` in each folder contains instructions for running the code).
+These writeups are set in LaTeX and located in the `writeups` folder. Their Matlab code implementations are in the correspondingly-named folders (the `README.md` in each folder contains instructions for running the code).
 
 Enjoy!
