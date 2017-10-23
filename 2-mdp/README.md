@@ -1,6 +1,6 @@
 A solution to the inverted pendulum problem by setting it up as a Markov decision problem (MDP) and directly solving the Bellman equations for an optimal policy.
 
-See `writeups/2-mdp` for an explanation of this solution.
+See [Chapter 2: MDP](../writeups/2-mdp/2-mdp.pdf) for an explanation of this solution.
 
 Run `run_simulation.m` to run the simulation.
 
