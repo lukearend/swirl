@@ -40,4 +40,4 @@ end
 
 pi_star = optimal_policy(P,V);
 
-save('value_iteration_ipe','pi_star');
+save('value_iteration','pi_star');

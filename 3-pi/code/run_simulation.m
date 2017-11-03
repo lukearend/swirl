@@ -22,7 +22,7 @@ X = [t,x,theta,v,omega]'; % State vector.
 consts = [m,M,l,g,w]'; % Physical constants vector.
 
 % Load policy.
-load('policy_iteration_ipe-step=70.mat','pi_star')
+load('value_iteration.mat','pi_star')
 
 % Run simulation.
 while(abs(X(2)) <= w/2)
