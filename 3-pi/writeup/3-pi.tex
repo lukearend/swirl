@@ -78,7 +78,7 @@ In the last chapter we also derived the equation for the value function given a 
 \label{eq:value} V(s) = \sum_{s^\prime \in \mathscr{S}} P_{\pi(s)}(s, s^\prime) \Big(R_{\pi(s)}(s, s^\prime) + \gamma V(s^\prime)\Big).
 \end{equation}
 
-Of the two steps, this is the one which requires more computational effort. Finding $V(s)$ requires solving a set of $|\mathscr{S}|$ linear equations in $|\mathscr{S}|$ unknowns. Roughly, we have two options for solving this system: (i) directly using methods from linear algebra and (ii) via iterative numerical methods.
+Of the two steps, this is the one which requires more computational effort. Finding $V(s)$ requires solving a set of $|\mathscr{S}|$ linear equations in $|\mathscr{S}|$ unknowns. Roughly, we have two options for solving this system: (i) directly, using methods from linear algebra, and (ii) via iterative numerical methods.
 
 \section{Computing the value function}
 
@@ -158,5 +158,7 @@ TO DO:
 -explain iterative policy evaluation?
 
 -philosophical discussion of bootstrapping nature of reinforcement learning
+
+-fix notation in matrix math!---should not be $P R^T$ but a vector produced by dotting each row of P with each row of R
 
 \end{document}
