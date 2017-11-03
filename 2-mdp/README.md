@@ -1,10 +1,10 @@
-A solution to the inverted pendulum problem by setting it up as a Markov decision problem (MDP) and directly solving the Bellman equations for an optimal policy.
+A solution to the inverted pendulum task by setting it up as a Markov decision process (MDP) and directly solving the Bellman equations for an optimal policy.
 
-See [Chapter 2: MDP](../writeups/2-mdp/2-mdp.pdf) for an explanation of this solution.
+See [Chapter 2: Markov decision process](writeup/2-mdp.pdf) for an explanation of this solution.
 
-Run `run_simulation.m` to run the simulation.
+Run `code/run_simulation.m` to run the simulation.
 
-The solution to the MDP (the optimal policy) is pre-computed. Here are the steps for re-computing the solution, should you wish to do so:
+The solution to the MDP (the optimal policy) is pre-computed using the scripts in the `code` directory. Here are the steps for re-computing the solution, should you wish to do so:
 
 1. Run `transition_probs.m` to build the transition probabilities via Monte Carlo estimation. This usually takes a few minutes.
 2. Run `reward_fn.m` to build the reward function.
