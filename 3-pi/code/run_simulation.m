@@ -1,5 +1,5 @@
 % Run simulation with MDP-optimal agent.
-addpath('../0-simulation_dynamics/code/')
+addpath('../../0-sim/code/')
 
 % Initial conditions.
 t = 0;
@@ -21,8 +21,8 @@ h = 0.05; % Time step size.
 X = [t,x,theta,v,omega]'; % State vector.
 consts = [m,M,l,g,w]'; % Physical constants vector.
 
-% Load optimal policy.
-load('policy_iteration.mat','pi_star')
+% Load policy.
+load('policy_iteration_after_1750.mat','pi_star')
 
 % Run simulation.
 while(abs(X(2)) <= w/2)

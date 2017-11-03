@@ -1,5 +1,5 @@
 % Run simulation with MDP-optimal agent.
-addpath('../0-simulation_dynamics/code/')
+addpath('../../0-sim/code/')
 
 % Initial conditions.
 t = 0;

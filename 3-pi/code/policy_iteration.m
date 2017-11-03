@@ -18,7 +18,7 @@ while true
     fprintf('Finished policy iteration step %i.\n',i);
 
     if pi_star == pi
-        fprintf('Policy iteration terminated.');
+        fprintf('Policy iteration terminated.\n');
         break
     end
     
@@ -26,4 +26,4 @@ while true
     pi = pi_star;
 end
 
-save('policy_iteration','pi_star');
+save('policy_iteration_after_1750','pi_star');
