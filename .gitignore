@@ -1,1 +1,11 @@
 .DS_Store
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.m~
+2-mdp/code/reward_fn.mat
+2-mdp/code/transition_probs.mat
+2-mdp/code/value_fn.mat
+3-pi/code/transition_probs.mat
+3-pi/code/reward_fn.mat
