@@ -1,9 +1,10 @@
-function draw(consts,X,f)
+function draw(X,f,consts)
 % draw Plots the simulation.
 %
 % Args:
-%   consts: physical constants vector [m,M,l,g,w].
 %   X: state vector [t,x,phi,v,omega].
+%   f: force on cart.
+%   consts: physical constants vector [m,M,l,g,w].
 
 radius = 0.1; % graphical radius of bob
 

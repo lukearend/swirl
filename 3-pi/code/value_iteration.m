@@ -4,7 +4,7 @@ n = 10;
 num_actions = 5;
 gamma = 0.9;
 
-theta = 0.0001; % Stopping threshold.
+theta = 0.0000001; % Stopping threshold.
 
 load('transition_probs.mat','P');
 load('reward_fn.mat','R');

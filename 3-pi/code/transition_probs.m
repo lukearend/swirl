@@ -29,7 +29,7 @@ for s = 1:num_states
 
             % Run the simulation one step forward.
             f = get_force(a);
-            X = rk4(h,consts,X,f);
+            X = rk4(X,f,consts,h);
 
             % See where the simulation went.
             s_next = get_state(X);

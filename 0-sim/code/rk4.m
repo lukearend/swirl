@@ -1,11 +1,11 @@
-function X = rk4(h,consts,X,f)
+function X = rk4(consts,h)
 % rk4 Generalized, vectorized fourth-order Runge-Kutta method.
 %
 % Args:
-%   h: time step size.
-%   consts: physical constants vector [m,M,l,g,w]'.
 %   X: state vector [t,x,theta,v,omega]'.
-%   f: force due to motor.
+%   f: force on cart.
+%   consts: physical constants vector [m,M,l,g,w]'.
+%   h: time step size.
 %
 % Returns:
 %   X: updated (time-advanced) state vector.

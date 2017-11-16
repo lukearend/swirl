@@ -42,8 +42,8 @@ while(abs(X(2)) <= w/2)
     [f,ang_error_sum,ang_last_error] = pid_controller(K,X(3),targ_theta,ang_error_sum,ang_last_error);
     
     % Advance the simulation and draw.
-    X = rk4(h,consts,X,f);
-    draw(consts,X,f);
+    X = rk4(X,f,consts,h);
+    draw(X,f,consts);
     
     elapsed = toc;
     if elapsed < h

@@ -39,8 +39,8 @@ while(abs(X(2)) <= w/2)
     
     % Advance the simulation and draw.
     f = get_force(a);
-    X = rk4(h,consts,X,f);
-    draw(consts,X,f);
+    X = rk4(X,f,consts,h);
+    draw(X,f,consts);
     
     elapsed = toc;
     if elapsed < h
