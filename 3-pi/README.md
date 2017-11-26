@@ -2,13 +2,14 @@ A solution to the inverted pendulum task via policy iteration.
 
 See [Chapter 3: Policy iteration](writeup/3-pi.pdf) for an explanation of this solution.
 
-Run `code/run_simulation.m` to run the simulation. Three different policies may be used by changing the line 
+Run `code/run_simulation.m` to run the simulation. Three different policies may be used by commenting to choose amongst the lines
 
 ```
 % Load policy.
-load('policy_iteration_after_1750.mat','pi_star')
+% load('policy_iteration.mat','pi_star')
+% load('policy_iteration_ipe.mat','pi_star')
+load('value_iteration.mat','pi_star')
 ```
-
 
 The solution (optimal policy) is pre-computed using the scripts in the `code` directory. Here are the steps for re-computing the solution, should you wish to do so:
 

@@ -22,6 +22,8 @@ X = [t,x,theta,v,omega]'; % State vector.
 consts = [m,M,l,g,w]'; % Physical constants vector.
 
 % Load policy.
+% load('policy_iteration.mat','pi_star')
+% load('policy_iteration_ipe.mat','pi_star')
 load('value_iteration.mat','pi_star')
 
 % Run simulation.

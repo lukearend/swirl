@@ -1,13 +1,14 @@
-function f = get_force(a, env)
-% get_force Gets force based on agent's action.
+function a = get_action(pi, s)
+% get_action Gets action based on current state and policy.
 %
 % Args:
-%   a: index for agent's action.
-%   env: struct containing parameters for environment.
+%   pi: array of probabilities such that pi(s, a) is the probability of taking
+%       action a in state s.
+%   s: state.
 %
 % Returns:
-%   f: force on cart.
+%   a: action.
 
-f = a*(2*env.f_lim)/(env.num_actions-1) + env.f_lim/2
+a = find(rand <= cumsum(pi(s, :)), 1);
 
 end

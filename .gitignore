@@ -4,6 +4,8 @@
 *.out
 *.synctex.gz
 *.m~
+*.fdb_latexmk
+*.fls
 2-mdp/code/reward_fn.mat
 2-mdp/code/transition_probs.mat
 2-mdp/code/value_fn.mat
