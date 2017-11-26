@@ -1,6 +1,6 @@
 A solution to the inverted pendulum task via Monte Carlo methods.
 
-See [Chapter 5: TD learning](writeup/4-mc.pdf) for an explanation of this solution.
+See [Chapter 5: TD learning](writeup/5-td.pdf) for an explanation of this solution.
 
 Run `code/run_simulation.m` to run the simulation.
 
